@@ -1,1 +1,3 @@
-quasar-theme-poc
+# Quasar App
+
+> WIP

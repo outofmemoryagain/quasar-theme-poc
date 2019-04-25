@@ -1,0 +1,6 @@
+{
+  "@quasar/typescript": {
+    "webpack": "plugin",
+    "rename": true
+  }
+}

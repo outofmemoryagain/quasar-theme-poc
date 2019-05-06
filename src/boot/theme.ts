@@ -53,5 +53,23 @@ export default function({Vue} : any) {
               { "name": "light", "color": "#DFE1DF" }
             ]
           }
+          ,
+        {
+            name: "dark", colors: [
+              { "name": "primary", "color": "#1a2936" },
+              { "name": "secondary", "color": "#0f423d" },
+              { "name": "tertiary", "color": "#9c27b0" },
+              { "name": "accent", "color": "#D9D9D6" },
+              { "name": "positive", "color": "#0d541d" },
+              { "name": "negative", "color": "#5c020c" },
+              { "name": "info", "color": "#19606e" },
+              { "name": "warning", "color": "#7d5c00" },
+              { "name": "faded", "color": "#454647" },
+              { "name": "dark", "color": "#DFE1DF" },
+              { "name": "black", "color": "#DFE1DF" },
+              { "name": "white", "color": "#37424B" },
+              { "name": "light", "color": "#37424B " }
+            ]
+          }
       ]);
 } 

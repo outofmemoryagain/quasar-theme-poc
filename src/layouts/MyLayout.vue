@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="glossy" v-themeable:color="'primary'">
-      <q-toolbar>
+    <q-header elevated class="bg-primary">
+      <q-toolbar class="glossy">
         <q-btn
           flat
           dense
@@ -16,7 +16,6 @@
           Quasar App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 

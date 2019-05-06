@@ -1,17 +1,17 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center bg-white">
     <div class="q-pa-md q-gutter-sm">
       <span>Buttons</span>
-      <q-btn color="primary" v-themeable @click="changeTheme">Change Theme</q-btn>
-      <q-btn color="secondary" v-themeable @click="changeTheme" flat>Change Theme</q-btn>
-      <q-btn color="positive" v-themeable @click="changeTheme">Change Theme</q-btn>
-      <q-btn color="info" v-themeable @click="changeTheme">Change Theme</q-btn>
+      <q-btn color="primary" @click="changeTheme">Change Theme</q-btn>
+      <q-btn color="secondary" @click="changeTheme" flat>Change Theme</q-btn>
+      <q-btn color="positive" @click="changeTheme">Change Theme</q-btn>
+      <q-btn color="info" @click="changeTheme">Change Theme</q-btn>
     </div>
     <div class="q-pa-md q-gutter-sm">
       <span>Inputs</span>
-      <q-input v-model="text" color="primary" v-themeable></q-input>
-      <q-input v-model="text" color="primary" filled v-themeable></q-input>
-      <q-input v-model="text" color="secondary" bg-color="primary" filled dark v-themeable></q-input>
+      <q-input v-model="text" color="primary" ></q-input>
+      <q-input v-model="text" color="primary" filled ></q-input>
+      <q-input v-model="text" color="secondary" bg-color="primary" filled dark ></q-input>
     </div>
   </q-page>
 </template>

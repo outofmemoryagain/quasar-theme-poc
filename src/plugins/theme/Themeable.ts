@@ -1,5 +1,7 @@
-import { VNodeDirective } from "vue";
+import { VNodeDirective, VNode } from "vue";
 import { Theme, ThemeColor } from "./ThemeSettings";
+import { colors } from "quasar";
+
 let observer : any;
 
 function updateStyle(el: HTMLElement, color: string, value: ThemeColor) {
@@ -54,29 +56,45 @@ function removeTheme(mutationsList: MutationRecord[], value: VNodeDirective){
 }
 
 export default {
-  bind(el: any, value: VNodeDirective) {
-    setTheme(el, value);
+  bind(el: any, value: VNodeDirective, vnode: VNode) {
+    setTheme(value, vnode);
   },
-  update(el:any, value: VNodeDirective){
-    setTheme(el, value);
+  update(el: any, value: VNodeDirective, vnode: VNode){
+    setTheme(value, vnode);
   },
   unbind() {
     observer.disconnect();
   }
 };
 
-function setTheme(el: any, value: VNodeDirective){
-  if(observer)
-  {
-    observer.disconnect();
-  }
-  observer = new MutationObserver((mutationsList)=> {      
-    removeTheme(mutationsList, value);
-    return updateStyles(document.body, value);
-  });
-  observer.observe(document.body,  { attributes: true, childList: true, subtree: true, characterData: true, attributeOldValue: true });
+function setTheme(value: VNodeDirective, vnode: VNode){
+  // If IE use workaround to setBrand since CSS variables are not supported.
+  if(vnode.context && vnode.context.$q.platform.is.ie) {    
+    if(observer) {
+      observer.disconnect();
+    }
+    observer = new MutationObserver((mutationsList)=> {
+      // Remove existing theme modifications to ensure that changes in style based on state changes, such as 
+      // active day in the QDate control are handled properly.  Without this the active rendered color style
+      // would still be applied even after the day selection had changed.
+      removeTheme(mutationsList, value);
 
-  updateStyles(document.body, value);
+      // Reapply the styles.  This approach is a little bit brute forced, and could probably be optimized to 
+      // be solely driven by the mutations list fro the observable.  But some performance testing would need to 
+      // be done to determine if inspecting every element from a mutation list is more performant than
+      // just reapplying the styles as it is currently doing.
+      return updateStyles(document.body, value);
+    });
+    observer.observe(document.body,  { attributes: true, childList: true, subtree: true, characterData: true, attributeOldValue: true });
+
+    updateStyles(document.body, value);
+  }
+  else {
+    const theme = value.value as Theme;
+    if(theme) {
+      theme.colors.forEach(color => colors.setBrand(color.name, color.color));
+    }
+  }
 }
 
 function removeBgTheme(color: ThemeColor, mutation: MutationRecord, target: HTMLElement) {

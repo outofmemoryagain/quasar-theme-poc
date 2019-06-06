@@ -3,6 +3,8 @@
 A rough prototype for a directive to change the colors based on a defined theme which can be dynamically loaded at runtime.  This is a bruteforce approach that could be optimized, and it is designed to be able to support browsers that do not support css variables, but could be updated to use variables when supported and this less efficient approach otherwise.
 
 ```
+yarn install
+
 quasar dev
 ```
 

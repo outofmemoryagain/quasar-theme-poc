@@ -1,6 +1,6 @@
 <template>
   <div id="q-app" >
-    <router-view v-themeable/>
+    <router-view v-themeable="$theme.theme"/>
   </div>
 </template>
 

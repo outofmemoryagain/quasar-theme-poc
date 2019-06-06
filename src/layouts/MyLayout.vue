@@ -15,7 +15,7 @@
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
+        <q-btn flat @click="changeTheme">Change Theme</q-btn>
       </q-toolbar>
     </q-header>
 
@@ -89,11 +89,16 @@ export default Vue.extend({
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      themeIndex: 0
     }
   },
   methods: {
-    openURL
+    openURL,
+    changeTheme () {
+      this.themeIndex = this.themeIndex < this.$theme.themes.length - 1 ? this.themeIndex + 1 : 0
+      this.$theme.setTheme(this.$theme.themes[this.themeIndex].name)
+    }
   }
 })
 </script>

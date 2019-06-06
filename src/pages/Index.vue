@@ -1,17 +1,20 @@
 <template>
-  <q-page class="flex flex-center bg-white">
+  <q-page class="flex flex-center bg-body">
     <div class="q-pa-md q-gutter-sm">
       <span>Buttons</span>
-      <q-btn color="primary" @click="changeTheme">Change Theme</q-btn>
-      <q-btn color="secondary" @click="changeTheme" flat>Change Theme</q-btn>
-      <q-btn color="positive" @click="changeTheme">Change Theme</q-btn>
-      <q-btn color="info" @click="changeTheme">Change Theme</q-btn>
+      <q-btn color="primary" >Primary</q-btn>
+      <q-btn color="secondary"  flat>Primary</q-btn>
+      <q-btn color="positive" >positive</q-btn>
+      <q-btn color="info" >info</q-btn>
     </div>
     <div class="q-pa-md q-gutter-sm">
       <span>Inputs</span>
       <q-input v-model="text" color="primary" ></q-input>
       <q-input v-model="text" color="primary" filled ></q-input>
       <q-input v-model="text" color="secondary" bg-color="primary" filled dark ></q-input>
+    </div>
+    <div class="q-pa-md q-gutter-sm">
+      <q-date v-model="date" color="primary"></q-date>
     </div>
   </q-page>
 </template>
@@ -27,7 +30,8 @@ export default Vue.extend({
   data () {
     return {
       themeIndex: 0,
-      text: ''
+      text: '',
+      date: ''
     }
   },
   methods: {
